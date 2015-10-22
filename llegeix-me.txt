@@ -1,0 +1,40 @@
+
+########################################################
+Get data from measurement database
+########################################################
+
+data=dbget(b2v,'2010-09-05 12:00:00.000','2010-09-05 12:05:59.999',step="1 MINUTE",exe='cern-mdb')
+
+# To put it into a tsv file:
+mkcmd(b2v,'2010-09-05 12:00:00.000','2010-09-05 12:05:59.999',step="1 MINUTE",exe='cern-mdb')
+
+cern-mdb -vs "LHC.BQBBQ.UA43.FFT1_B2:FFT_DATA_V" -t1 "2010-09-05 12:00:00.000" -t2 "2010-09-05 12:05:59.999" -IT "SECOND" -NI "30" -N datatest.tsv
+
+cat datatest_20100905120400CET.tsv datatest_20100905120430CET.tsv > datatest.tsv
+data=loadout('datatest.tsv')
+
+
+
+
+
+
+
+##############
+Damper
+##############
+
+cern-ldb -vs "ADTH.SR4.Q7.B1:DSPU_OSC_OBSERVATION,ADTH.SR4.Q7.B2:DSPU_OSC_OBSERVATION,ADTH.SR4.Q9.B1:DSPU_OSC_OBSERVATION,ADTH.SR4.Q9.B2:DSPU_OSC_OBSERVATION,ADTV.SR4.Q7.B1:DSPU_OSC_OBSERVATION,ADTV.SR4.Q7.B2:DSPU_OSC_OBSERVATION,ADTV.SR4.Q9.B1:DSPU_OSC_OBSERVATION,ADTV.SR4.Q9.B2:DSPU_OSC_OBSERVATION" -t1 "2010-10-14 21:00:00.000" -t2 "2010-10-21 23:59:59.999" -C mdb.conf -IT "MINUTE" -NI "1" -N data/adt_osc_observation -F CSV
+
+
+The data is avaialble in:
+http://pcbe13028/lhcbbqdata/damper_data/measurement_database/data/
+
+
+In python you obtain something similar to the the bbq fft data from a
+vector or beam postion (x) by using:
+
+def c2db(c):
+  """complex signal to decibel"""
+  return 20.*log10(abs(c))
+
+c2db(rfft(x))

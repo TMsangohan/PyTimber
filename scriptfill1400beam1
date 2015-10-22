@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./cern-ldb -vs "LHC.BQM.B1:BUNCH_LENGTH_MEAN" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -C ldb.conf -N Fill1400/Fill1400Beam1BunchLength -F CSV
+./cern-ldb -vs "LHC.BSRTS.5R4.B1:BEAM_SIGMA_H" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -C ldb.conf -N Fill1400/Fill1400Beam1SigmaHor -F CSV
+./cern-ldb -vs "LHC.BSRTS.5R4.B1:BEAM_SIGMA_V" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -C ldb.conf -N Fill1400/Fill1400Beam1SigmaVer -F CSV
+./cern-ldb -vs "LHC.BGIH.5L4.B1:BEAM_SIGMA" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -C ldb.conf -N Fill1400/Fill1400Beam1BGISigmaHor -F CSV
+./cern-ldb -vs "LHC.BGIV.5L4.B1:BEAM_SIGMA" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -C ldb.conf -N Fill1400/Fill1400Beam1BGISigmaVer -F CSV
+./cern-ldb -vs "LHC.BGIH.5L4.B1:BEAM_PROFILE_DATA" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -sa REPEAT -sf 1_MIN -C ldb.conf -N Fill1400/Fill1400Beam1ProfileHor -F CSV
+./cern-ldb -vs "LHC.BGIV.5L4.B1:BEAM_PROFILE_DATA" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -sa REPEAT -sf 1_MIN -C ldb.conf -N Fill1400/Fill1400Beam1ProfileVer -F CSV
+./cern-ldb -vs "LHC.BCTDC.A6R4.B1:BEAM_INTENSITY" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -C ldb.conf -N Fill1400/Fill1400Beam1Intensity -F CSV
+./cern-ldb -vs "LHC.BCTFR.A6R4.B1:BUNCH_INTENSITY" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN -sa REPEAT -sf 5_MIN -C ldb.conf -N Fill1400/Fill1400Beam1BunchIntensity -F CSV
+./cern-ldb -vs "ATLAS:LUMI_REGION_SIZE_X" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN   -C ldb.conf -N Fill1400/Fill1400Atlasx -F CSV
+./cern-ldb -vs "ATLAS:LUMI_REGION_SIZE_Y" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN   -C ldb.conf -N Fill1400/Fill1400Atlasy -F CSV
+./cern-ldb -vs "ATLAS:LUMI_REGION_SIZE_Z" -fn 1400 -bm1 STABLE -bm2 RAMPDOWN   -C ldb.conf -N Fill1400/Fill1400Atlasz -F CSV

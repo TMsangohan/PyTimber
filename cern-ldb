@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DIST_DIR="/afs/cern.ch/group/si/slap/bin/logging-data-extractor"
+LIB_DIR=$DIST_DIR/lib/
+MAIN_JAR=$DIST_DIR/logging-data-extractor-client.jar
+
+SEP=":"
+CLASSPATH=${MAIN_JAR}${SEP}`ls ${LIB_DIR}/*.jar | tr -s "\n" "$SEP"`
+#echo $CLASSPATH
+
+# run java process with a name of the current script file
+java -cp $CLASSPATH -Xms128m -Xmx384m cern.accdm.timeseries.access.client.commandline.Export -C ldb.conf "$@"

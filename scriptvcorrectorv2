@@ -1,0 +1,13 @@
+#!/bin/bash
+
+STABLEFILLS="3819
+3820
+3824
+3829
+3833
+3735"
+
+for f in $STABLEFILLS 
+do 
+	echo $f
+done

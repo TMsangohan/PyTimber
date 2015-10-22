@@ -1,0 +1,35 @@
+#!/bin/bash
+
+STABLEFILLS="3819
+3820
+3824
+3829
+3833
+3835"
+basedir="DownloadTimber"
+
+for f in $STABLEFILLS
+do
+        downdir=$basedir/Fill$f
+	mkdir -p $downdir
+	./cern-ldb -vs "RPTI.SR2.RBAWV.R2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MBAW1R2 -F CSV
+	./cern-ldb -vs "RPTI.SR2.RBAWV.R2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MBAW1R2 -F CSV
+	./cern-ldb -vs "RPTL.SR2.RBXWTV.R2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MBXWT1R2 -F CSV
+	./cern-ldb -vs "RPMBB.UA27.RCBXV1.R2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBXV1R2 -F CSV
+	./cern-ldb -vs "RPMBB.UA27.RCBXV2.R2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBXV2R2 -F CSV
+	./cern-ldb -vs "RPMBB.UA27.RCBXV3.R2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBXV3R2 -F CSV
+	./cern-ldb -vs "RPLB.UA27.RCBYVS4.R2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBYV4R2-F CSV
+	./cern-ldb -vs "RPLB.UA27.RCBCV5.R2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBCV5R2 -F CSV
+	./cern-ldb -vs "RPLB.UA27.RCBCVS5.R2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBCVS5R2 -F CSV
+	./cern-ldb -vs "RPLB.UA27.RCBCV7.R2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBCV7R2 -F CSV
+	./cern-ldb -vs "RPTL.SR2.RBWMDV.L2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MBDW1L2 -F CSV
+	./cern-ldb -vs "RPTL.SR2.RBXWTV.L2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MBXWT1L2 -F CSV
+	./cern-ldb -vs "RPMBB.UA23.RCBXV1.L2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBXV1L2 -F CSV
+	./cern-ldb -vs "RPMBB.UA23.RCBXV2.L2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBXV2L2 -F CSV
+	./cern-ldb -vs "RPMBB.UA23.RCBXV3.L2:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBXV3L2 -F CSV
+	./cern-ldb -vs "RPLB.UA23.RCBYV4.L2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBYV4L2-F CSV
+	./cern-ldb -vs "RPLB.UA23.RCBYVS4.L2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBYVS4L2 -F CSV
+	./cern-ldb -vs "RPLB.UA23.RCBYVS5.L2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBCV5L2 -F CSV
+	./cern-ldb -vs "RPLB.UA23.RCBCV6.L2B1:I_MEAS" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/VCORRIR2MCBCV7L2 -F CSV
+	./cern-ldb -vs "LHC.BSRA.US45.B1:ABORT_GAP_ENERGY" -fn $f -bm1 RAMP -bm2 RAMPDOWN -C ldb.conf -N $downdir/ENERGY -F CSV
+done
